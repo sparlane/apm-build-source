@@ -10,7 +10,7 @@ RUN /bin/bash /setup-tz.sh
 RUN useradd -U -d /ardupilot ardupilot && usermod -G users ardupilot && chown ardupilot:users /ardupilot && echo "ardupilot ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/ardupilot && chmod 0440 /etc/sudoers.d/ardupilot
 
 USER ardupilot
-RUN git clone https://github.com/ArduPilot/ardupilot . && git checkout -b ArduPlane-4.0.5 ArduPlane-4.0.5 && git submodule update --init --recursive
+RUN git clone https://github.com/ArduPilot/ardupilot . && git checkout -b Copter-4.0.3 Copter-4.0.3 && git submodule update --init --recursive
 
 ENV USER=ardupilot
 RUN DEBIAN_FRONTEND=noninteractive Tools/environment_install/install-prereqs-ubuntu.sh -y
