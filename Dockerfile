@@ -15,6 +15,9 @@ RUN git clone https://github.com/ArduPilot/ardupilot . && git checkout -b ArduPl
 #COPY *.patch .
 #RUN for p in `ls *.patch`; do echo "Applying $p"; patch -p1 < $p; done
 
+COPY *.patch .
+RUN for p in `ls *.patch`; do echo "Applying $p"; patch -p1 < $p; done
+
 ENV USER=ardupilot
 RUN DEBIAN_FRONTEND=noninteractive Tools/environment_install/install-prereqs-ubuntu.sh -y
 
