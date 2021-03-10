@@ -10,7 +10,7 @@ RUN /bin/bash /setup-tz.sh
 RUN useradd -U -d /ardupilot ardupilot && usermod -G users ardupilot && chown ardupilot:users /ardupilot && echo "ardupilot ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/ardupilot && chmod 0440 /etc/sudoers.d/ardupilot
 
 USER ardupilot
-RUN git clone https://github.com/ArduPilot/ardupilot . && git checkout -b Copter-4.0.6 Copter-4.0.6 && git submodule update --init --recursive
+RUN git clone https://github.com/ArduPilot/ardupilot . && git checkout -b Copter-4.0.7 Copter-4.0.7 && git submodule update --init --recursive
 
 #COPY *.patch .
 #RUN for p in `ls *.patch`; do echo "Applying $p"; patch -p1 < $p; done
