@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
 WORKDIR /ardupilot
 
@@ -11,7 +11,7 @@ RUN /bin/bash /setup-tz.sh
 RUN useradd -U -d /ardupilot ardupilot && usermod -G users ardupilot && chown ardupilot:users /ardupilot && echo "ardupilot ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/ardupilot && chmod 0440 /etc/sudoers.d/ardupilot
 
 USER ardupilot
-RUN git clone https://github.com/ArduPilot/ardupilot . && git checkout -b Plane-4.2.2 Plane-4.2.2 && git submodule update --init --recursive
+RUN git clone https://github.com/ArduPilot/ardupilot . && git checkout -b Plane-4.5.2 Plane-4.5.2 && git submodule update --init --recursive
 
 #COPY *.patch .
 #RUN for p in `ls *.patch`; do echo "Applying $p"; patch -p1 < $p; done
