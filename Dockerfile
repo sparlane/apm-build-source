@@ -15,8 +15,9 @@ ARG VEHICLE_TYPE=Plane
 # ARDUPILOT_VERSION selects which version to build
 ARG ARDUPILOT_VERSION
 
+COPY fetch.sh /
 USER ardupilot
-RUN git clone https://github.com/ArduPilot/ardupilot . && git checkout -b ${VEHICLE_TYPE}-${ARDUPILOT_VERSION} ${VEHICLE_TYPE}-${ARDUPILOT_VERSION} && git submodule update --init --recursive
+RUN /fetch.sh $VEHICLE_TYPE $ARDUPILOT_VERSION
 
 ENV USER ardupilot
 RUN SKIP_AP_GRAPHIC_ENV=1 DEBIAN_FRONTEND=noninteractive Tools/environment_install/install-prereqs-ubuntu.sh -y
