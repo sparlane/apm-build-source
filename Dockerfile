@@ -1,8 +1,8 @@
-FROM ubuntu:jammy
+FROM ubuntu:noble
 
 WORKDIR /ardupilot
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install -y git sudo gdb
 
 COPY setup-tz.sh /
@@ -19,9 +19,7 @@ COPY fetch.sh /
 USER ardupilot
 RUN /fetch.sh $VEHICLE_TYPE $ARDUPILOT_VERSION
 
-ENV USER ardupilot
+ENV USER=ardupilot
 RUN SKIP_AP_GRAPHIC_ENV=1 DEBIAN_FRONTEND=noninteractive Tools/environment_install/install-prereqs-ubuntu.sh -y
 
-ENV PATH /usr/lib/ccache:/ardupilot/Tools/scripts:${PATH}
-ENV PATH /ardupilot/Tools/autotest:${PATH}
-ENV PATH /ardupilot/.local/bin:$PATH
+ENV PATH=/ardupilot/.local/bin:/ardupilot/Tools/autotest:/usr/lib/ccache:/ardupilot/Tools/scripts:${PATH}
