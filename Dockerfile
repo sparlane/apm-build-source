@@ -3,7 +3,7 @@ FROM ubuntu:noble
 WORKDIR /ardupilot
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt update && apt install -y git sudo gdb
+RUN apt update && apt install -y git sudo gdb python3-empy python3-future
 
 COPY setup-tz.sh /
 RUN /bin/bash /setup-tz.sh
